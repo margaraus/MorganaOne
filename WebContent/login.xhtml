@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="titulo">Efetuar login</ui:define>
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="msgs"/>
+	 		<h:panelGrid columns="2">  
+	            <h:outputText for="usuario" value="Usuário:" />  
+	            <h:inputText value="#{loginBean.usuario.username}" id="usuario" required="true" />  
+	              
+	            <h:outputLabel for="password" value="Senha:" />  
+	            <h:inputSecret value="#{loginBean.usuario.password}" id="password" required="true" />  
+	            
+				<h:commandButton id="loginButton" value="Login" update="msgs" action="#{loginBean.efetuarLogin}"  />  
+	        </h:panelGrid>
+		</h:form>
+	</ui:define>
+	<ui:define name="rodape">2014 ConceptMX - Todos os direitos reservados.</ui:define>
+</ui:composition>
+</html>
