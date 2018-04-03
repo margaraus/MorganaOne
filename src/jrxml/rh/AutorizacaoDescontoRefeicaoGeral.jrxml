@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AutorizacaoDescontoRefeicaoGeral" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="dataExtenso" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="empresa" class="br.com.potierp.model.Empresa">
+		<fieldDescription><![CDATA[empresa]]></fieldDescription>
+	</field>
+	<field name="pessoa" class="br.com.potierp.model.Pessoa">
+		<fieldDescription><![CDATA[pessoa]]></fieldDescription>
+	</field>
+	<field name="cidade" class="java.lang.String">
+		<fieldDescription><![CDATA[empresa.endereco.cidade]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="157" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="102" width="502" height="27"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[TERMO DE AUTORIZAÇÃO PARA DESCONTO DE REFEIÇÃO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="27" y="89" width="502" height="1"/>
+			</line>
+			<line>
+				<reportElement x="27" y="140" width="502" height="1"/>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement x="226" y="20" width="104" height="49"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/imagens/logotipo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="324" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="0" width="518" height="150"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Autorizo a empresa " + $F{empresa}.getRazaoSocial().toUpperCase() + ", a descontar do meu salário mensal, diretamente na folha de pagamento, o valor correspondente a R\$ 0,10 (dez centavos) do valor diário de cada refeição fornecida  de acordo com os dias úteis mensais de trabalho."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="216" width="518" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[_________________________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="21" y="236" width="518" height="28"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pessoa}.getNome().toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="21" y="153" width="518" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cidade}+", "+$P{dataExtenso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
