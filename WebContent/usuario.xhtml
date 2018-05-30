@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui">
+	<ui:composition template="_template.xhtml">
+		<ui:define name="titulo">Novo Usuário</ui:define>
+		<ui:define name="conteudo">
+			<h:form>
+				<fieldset>
+					<legend>Dados do Usuario</legend>
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Nome:" for="nome" />
+						<h:inputText id="nome" value="#{usuarioBean.usuario.nome}" />
+						
+						<h:outputLabel value="Username:" for="username" />
+						<h:inputText id="username" value="#{usuarioBean.usuario.username}" />
+						
+						<h:outputLabel value="Senha:" for="password" />
+						<h:inputSecret id="password" value="#{usuarioBean.usuario.password}" />
+						
+						<h:commandButton value="Gravar" action="#{usuarioBean.gravarUsuario}" />
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
+		</ui:define>
+		<ui:define name="rodape">2014 ConceptMX - Todos os direitos reservados.</ui:define>
+	</ui:composition>
+</html>
