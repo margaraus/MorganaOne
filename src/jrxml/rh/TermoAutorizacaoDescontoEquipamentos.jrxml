@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TermoAutorizacaoDescontoEquipamentos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="empresa" class="br.com.potierp.model.Empresa">
+		<fieldDescription><![CDATA[empresa]]></fieldDescription>
+	</field>
+	<field name="pessoa" class="br.com.potierp.model.Pessoa">
+		<fieldDescription><![CDATA[pessoa]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="226" y="10" width="104" height="49"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "/imagens/logotipo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="76" width="555" height="27"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="15" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[TERMO DE AUTORIZAÇÃO PARA DESCONTO DE EQUIPAMENTOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="471" splitType="Stretch">
+			<textField>
+				<reportElement x="24" y="25" width="502" height="131"/>
+				<textElement textAlignment="Justified">
+					<font size="16"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Autorizo a empresa " +$F{empresa}.getRazaoSocial().toUpperCase() + " a descontar do meu salário o valor a ser apurado pela mesma nos casos em que eu perder, danificar ou não devolver os Equipamentos que abaixo recebi."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="192" width="502" height="28"/>
+				<box>
+					<pen lineWidth="1.25"/>
+					<topPen lineWidth="1.25"/>
+					<leftPen lineWidth="1.25"/>
+					<bottomPen lineWidth="1.25"/>
+					<rightPen lineWidth="1.25"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[ 01 - Capa de chuva forrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="314" width="382" height="28"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Santo André,___ de ________________ de ______.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="397" width="382" height="28"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[__________________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="24" y="425" width="382" height="26"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pessoa}.getNome().toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
